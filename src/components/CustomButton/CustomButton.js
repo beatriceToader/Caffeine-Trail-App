@@ -40,6 +40,11 @@ const styles = StyleSheet.create ( {
         backgroundColor: '#6f5e55',
     },
 
+    container_SECONDARY: {
+        borderColor: '#6f5e55',
+        borderWidth: 2, 
+    },
+
     container_SPECIAL: {
         backgroundColor: 'gray',
     },
@@ -52,6 +57,10 @@ const styles = StyleSheet.create ( {
 
     text_TERTIARY: {
         color: 'white',
+    },
+
+    text_SECONDARY: {
+        color: '#6f5e55',
     }
 })
 

@@ -3,14 +3,13 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, Button, TouchableOpacity } from 'react-native';
 import { useFonts } from 'expo-font';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import SignInScreen from './src/screens/SignInScreen/SignInScreen';
-import SignUpScreen from './src/screens/SignUpScreen/SignUpScreen';
+import Navigation from './src/navigation';
 
 export default function App() {
 
   return (
     <SafeAreaView style={styles.root}>
-      <SignUpScreen/>
+      <Navigation/>
     </SafeAreaView>
   );
 }

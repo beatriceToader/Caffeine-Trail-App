@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import CustomInput from '../../components/CustomInput/CustomInput'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import SocialSignInButtons from '../../components/SocialSignInButtons/SocialSignInButtons'
+import { useFonts } from 'expo-font'
+import { useNavigation } from '@react-navigation/native'
 
 const SignUpScreen = () => {
 
@@ -11,24 +13,34 @@ const SignUpScreen = () => {
     const [password, setPassword] = useState('')
     const [passwordRepeat, setPasswordRepeat] = useState('')
 
+    const navigation = useNavigation()
+
     const onRegisterPressed = () => {
-        console.warn('onRegisterPressed')
+        navigation.navigate('ConfirmEmail')
     }
 
-    const onSignUpPressed = () => {
-        console.warn('onSignUpPressed')
+    const onSignInPressed = () => {
+        navigation.navigate('SignIn')
     }
 
     const onTermsOfUsePressed = () => {
-        console.warn('onTermsOfUsePressed')
+        navigation.navigate('onTermsOfUsePressed')
     }
 
     const onPrivacyPressed = () => {
-        console.warn('onPrivacyPressed')
+        navigation.navigate('onPrivacyPressed')
+    }
+
+    const [loaded] = useFonts({
+        Cooper: require('../../../assets/fonts/CooperLightBT.ttf'),
+    });
+    
+    if (!loaded) {
+     return null; //return null or a loading indicator while the font is loading
     }
 
     return (
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         <View style={styles.root}>
             <Text 
                 style={styles.title}>Create an account
@@ -71,8 +83,8 @@ const SignUpScreen = () => {
             <SocialSignInButtons /> 
 
             <CustomButton
-                text="Don't have an account? Create one!"
-                onPress={onSignUpPressed}
+                text="Have an account? Sing in!"
+                onPress={onSignInPressed}
                 type='TERTIARY'
             />   
         </View>
@@ -81,6 +93,10 @@ const SignUpScreen = () => {
 }
 
 const styles = StyleSheet.create ( {
+    scrollView: {
+        backgroundColor: '#73be73',
+    },
+   
     root: {
         alignItems: 'center',
         padding: 80,
@@ -90,7 +106,8 @@ const styles = StyleSheet.create ( {
         fontSize: 24,
         fontWeight: 'bold',
         margin: 10,
-        //color: '#6f5e55',
+        marginVertical: 40,
+        fontFamily: 'Cooper',
         color: 'black',
     },
 

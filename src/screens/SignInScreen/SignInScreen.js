@@ -4,6 +4,7 @@ import Logo from '../../../assets/images/Event-Finder-logo.png'
 import CustomInput from '../../components/CustomInput/CustomInput'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import SocialSignInButtons from '../../components/SocialSignInButtons/SocialSignInButtons'
+import { useNavigation } from '@react-navigation/native'
 
 const SignInScreen = () => {
 
@@ -12,20 +13,23 @@ const SignInScreen = () => {
 
     const {height} = useWindowDimensions()
 
+    const navigation = useNavigation()
+
     const onSignInPressed = () => {
-        console.warn('Sign in')
+        //to be changed
+        navigation.navigate('Home')
     }
 
     const onForgotPasswordPressed = () => {
-        console.warn('onForgotPasswordPressed')
+        navigation.navigate('ForgotPassword')
     }
 
     const onSignUpPressed = () => {
-        console.warn('onSignUpPressed')
+        navigation.navigate('SignUp')
     }
 
     return (
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         <View style={styles.root}>
             <Image 
                 source={Logo} 
@@ -69,9 +73,14 @@ const SignInScreen = () => {
 }
 
 const styles = StyleSheet.create ( {
+    scrollView: {
+        backgroundColor: '#73be73',
+    }, 
+
     root: {
         alignItems: 'center',
         padding: 80,
+        backgroundColor: '#73be73',
     },
 
     logo: {

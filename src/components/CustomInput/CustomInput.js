@@ -30,7 +30,7 @@ const styles = StyleSheet.create ( {
     },
 
     input: {
-      width: '50%',
+      width: '100%',
       maxWidth: 300,
       maxHeight: 200,
     },
