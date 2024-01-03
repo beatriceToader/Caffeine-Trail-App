@@ -1,0 +1,8 @@
+The Event Finder is a mobile app that creates a contact between art enthusiats and the events that take place around them. The user have access to all the events from their city in one place. They can get information about the events and 
+be redirected to the organizers' page in order to book tickets if needed. 
+
+How does it work?
+-> When you press the app icon you find the first page which tells you to "Get Started". Pressing the "Get Started" button you go to the Sign in page. 
+-> In the Sign In page you enter your account data and if you don't have an account you can chose to Sign Up (you get redirected to another page)
+-> After you are logged you get to a page where you have access to menu with the events (you can see it as a list or as a map with pins)
+-> If you press on one event you can see the informations related to that event and you have a book now button that will redirect you to the organizers' page from where you can book tickets
