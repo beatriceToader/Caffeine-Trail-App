@@ -2,10 +2,10 @@ import {View, Text, StyleSheet, Image} from 'react-native'
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import * as WebBrowser from 'expo-web-browser'
-import { useWarmUpBrowser } from '../../hooks/warmUpBrowser'
+import { useWarmUpBrowser } from '../../../hooks/warmUpBrowser'
 import { useOAuth } from '@clerk/clerk-expo'
 
-WebBrowser.maybeCompleteAuthSession();
+WebBrowser.maybeCompleteAuthSession()
 
 export default function LoginScreen() {
 
@@ -31,9 +31,9 @@ export default function LoginScreen() {
   return (
     <View style={styles.container} >
 
-        <Image style={styles.logoImage} source={require('../../assets/images/logo3.png')}/>
+        <Image style={styles.logoImage} source={require('../../../assets/images/logo3.png')}/>
 
-        <Image style={styles.shopImage} source={require('../../assets/images/shop3.png')}/>
+        <Image style={styles.shopImage} source={require('../../../assets/images/shop3.png')}/>
 
         <View style={styles.textContainer}>
             <Text style={styles.heading}>Choose your coffee adventure with Caffeine Trail!</Text>
