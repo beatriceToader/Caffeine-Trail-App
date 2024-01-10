@@ -1,0 +1,56 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-eventfinder-staging-123828-authRole",
+      "UnauthRoleArn": "arn:aws:iam::376398249675:role/amplify-eventfinder-staging-123828-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::376398249675:role/amplify-eventfinder-staging-123828-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-eventfinder-staging-123828-deployment",
+      "UnauthRoleName": "amplify-eventfinder-staging-123828-unauthRole",
+      "StackName": "amplify-eventfinder-staging-123828",
+      "StackId": "arn:aws:cloudformation:us-east-1:376398249675:stack/amplify-eventfinder-staging-123828/2aced170-a647-11ee-8753-1259e5ed7525",
+      "AmplifyAppId": "d3mqdcx64letr6"
+    }
+  },
+  "auth": {
+    "EventFinder": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "signupAttributes": [
+          "EMAIL",
+          "NAME"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "output": {
+        "UserPoolId": "us-east-1_l9WsGCZ5m",
+        "AppClientIDWeb": "212ou9k8phcpseoaui1srd5rao",
+        "AppClientID": "1v0khtqprht1jjfpt7mcipnbah",
+        "IdentityPoolId": "us-east-1:25fc1895-13ef-48a2-9884-b0e9db79ec2b",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:376398249675:userpool/us-east-1_l9WsGCZ5m",
+        "IdentityPoolName": "testAuthIdentityPool__staging",
+        "UserPoolName": "EventFinder"
+      },
+      "lastPushTimeStamp": "2023-12-29T19:27:39.456Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-eventfinder-staging-123828-deployment/amplify-cfn-templates/auth/EventFinder-cloudformation-template.json",
+        "logicalId": "authEventFinder"
+      }
+    }
+  }
+}
