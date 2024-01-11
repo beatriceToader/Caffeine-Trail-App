@@ -9,6 +9,7 @@ import config from './src/aws-exports';
 import * as Location from 'expo-location';
 import { UserLocationContext } from './src/context/UserLocationContext';
 import { useCallback } from 'react';
+import 'core-js/full/symbol/async-iterator';
 
 
 Amplify.configure(config)

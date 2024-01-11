@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons'
 export default function SearchBar({searchedLocation}){
     return(
         <View style={styles.container}>
-            <Ionicons name="location-sharp" size={26} color="#73be73" style={{paddingTop:10}} />
+            <Ionicons name="location-sharp" size={26} color="#73be73" style={{padding:8, paddingTop:10}} />
             <GooglePlacesAutocomplete
                 placeholder='Search coffee shop'
                 enablePoweredByContainer={false}
@@ -32,5 +32,5 @@ const styles=StyleSheet.create({
         paddingHorizontal:5,
         borderRadius:6,
         backgroundColor:'#ffffff'
-    }
+    },
 })

@@ -124,14 +124,6 @@ const SignUpScreen = () => {
                 onPress={handleSubmit(onRegisterPressed)}
             />
 
-            <Text 
-                style={styles.text}>By registering, you confirm that you accept our{' '}   
-                    <Text style={styles.link} onPress={onTermsOfUsePressed}>Terms of Use</Text> and{' '}
-                    <Text style={styles.link} onPress={onPrivacyPressed}>Privacy Policy</Text>.
-            </Text> 
-
-            <SocialSignInButtons /> 
-
             <CustomButton
                 text="Have an account? Sign in!"
                 onPress={onSignInPressed}
@@ -157,6 +149,7 @@ const styles = StyleSheet.create ( {
         fontWeight: 'bold',
         margin: 10,
         marginVertical: 40,
+        paddingTop:90,
         fontFamily: 'Outfit-Regular',
         color: 'black',
     },

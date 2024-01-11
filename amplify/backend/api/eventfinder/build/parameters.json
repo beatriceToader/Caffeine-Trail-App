@@ -1,0 +1,8 @@
+{
+    "AppSyncApiName": "eventfinder",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "AuthModeLastUpdated": "2024-01-09T18:19:16.364Z",
+    "S3DeploymentBucket": "amplify-eventfinder-staging-123828-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/e15421f63cc1c3cb78c6c6d7ebd932125031dc48"
+}

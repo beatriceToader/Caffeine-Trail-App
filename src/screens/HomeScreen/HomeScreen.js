@@ -24,9 +24,12 @@ const HomeScreen = () => {
     <View style={styles.container}>
       <View style={styles.body}>
         <View style={styles.imageContainer}>
-          <Image style={styles.logo} source={require('../../../assets/images/Event-Finder-logo.png')} />
+          <Image style={styles.logo} source={require('../../../assets/images/logo.png')} />
         </View>
-        <Text style={styles.textCustomizer}>Get in touch with a new fun experience!</Text>
+        <View style={{flexDirection: 'row',alignItems:'center', justifyContent:'flex-end'}}>
+        <Text style={styles.textCustomizer}>Get in touch with a new fun experience! </Text>
+        <Image style={styles.beans} source={require('../../../assets/images/coffee-beans.png')} />
+        </View>
       </View>
       
       <View style={styles.buttonContainer}>
@@ -62,9 +65,15 @@ const styles = StyleSheet.create ( {
     height: 200,
   },
 
+  beans:{
+    marginTop:5,
+    width:20,
+    height:20
+  },
+
   textCustomizer: {
-    color: '#464941',
-    fontFamily: 'Outfit-Regular',
+    color: 'black',
+    fontFamily: 'Cooper',
     fontSize: 16
   },
 
@@ -73,7 +82,7 @@ const styles = StyleSheet.create ( {
   },
 
   button: {
-    backgroundColor: '#6f5e55',
+    backgroundColor: '#00524b',
     padding: 12,
     borderRadius: 7,
   },

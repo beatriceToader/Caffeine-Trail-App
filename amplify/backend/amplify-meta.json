@@ -12,6 +12,38 @@
       "AmplifyAppId": "d3mqdcx64letr6"
     }
   },
+  "api": {
+    "eventfinder": {
+      "dependsOn": [],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ],
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
+            }
+          }
+        },
+        "GraphQLAPIIdOutput": "s6hiozihyrefledzkr4opqxwsi",
+        "GraphQLAPIEndpointOutput": "https://o3bhrsnnyfgthiv2x5m22qfoj4.appsync-api.us-east-1.amazonaws.com/graphql",
+        "GraphQLAPIKeyOutput": "da2-dnccxmdhvne3terlhy7qlno2n4"
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync",
+      "lastPushTimeStamp": "2024-01-09T18:26:04.723Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-eventfinder-staging-123828-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apieventfinder"
+      },
+      "lastPushDirHash": "rOZZHIKIIFtSrH1hYzMRu0b+Q+Q="
+    }
+  },
   "auth": {
     "EventFinder": {
       "customAuth": false,
@@ -46,7 +78,7 @@
         "IdentityPoolName": "testAuthIdentityPool__staging",
         "UserPoolName": "EventFinder"
       },
-      "lastPushTimeStamp": "2023-12-29T19:27:39.456Z",
+      "lastPushTimeStamp": "2024-01-09T18:26:04.734Z",
       "providerMetadata": {
         "s3TemplateURL": "https://s3.amazonaws.com/amplify-eventfinder-staging-123828-deployment/amplify-cfn-templates/auth/EventFinder-cloudformation-template.json",
         "logicalId": "authEventFinder"

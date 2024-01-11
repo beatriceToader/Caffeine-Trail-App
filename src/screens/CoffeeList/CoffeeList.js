@@ -66,6 +66,8 @@ export default CoffeeList;
 
 const styles = StyleSheet.create({
   headerContainer:{
+      paddingTop:15,
+      alignItems:'flex-start',
       position:'absolute',
       zIndex:10,
       padding:10,

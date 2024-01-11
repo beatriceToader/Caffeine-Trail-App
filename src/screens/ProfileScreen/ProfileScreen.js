@@ -27,6 +27,7 @@ const ProfileScreen = () => {
 
     fetchUserInfo();
   }, []); 
+
   return (
     <View style={styles.root}>
         <View>
@@ -69,7 +70,7 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     backgroundColor:'#73be73',
-    marginTop:20
+    //marginTop:15
     //justifyContent: 'center',
   },
   textContainer:{
@@ -97,12 +98,12 @@ const styles = StyleSheet.create({
     color: '#4F7942',
   },
   button:{
-    backgroundColor: '#6f5e55',
-    padding: 9,
-    borderRadius: 99,
+    backgroundColor: '#00524b',
+    padding: 8,
+    borderRadius: 7,
     marginTop: 25, 
-    marginRight:10,
-    marginLeft:10
+    marginRight:120,
+    marginLeft:120
 },
 
 buttonText:{

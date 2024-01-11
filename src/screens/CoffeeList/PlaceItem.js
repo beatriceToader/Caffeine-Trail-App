@@ -6,10 +6,23 @@ import { LinearGradient } from 'expo-linear-gradient'
 import { FontAwesome } from '@expo/vector-icons'
 import { Ionicons } from '@expo/vector-icons'
 import { Linking } from 'react-native'
+import { API, graphqlOperation } from 'aws-amplify'
+import { Auth } from 'aws-amplify'
+import { useState, useEffect } from 'react'
+import { createCoffeeShop, deleteCoffeeShop } from '../../graphql/mutations'
+import { useIsFocused } from '@react-navigation/native';
+
+
 
 export default function PlaceItem({place}){
 
     const PLACE_PHOTO_BASE_URL="https://places.googleapis.com/v1/"
+
+    const [isFavorite, setIsFavorite] = useState(false);
+
+    const [image, setImage] = useState('');
+
+    const isFocused = useIsFocused();
 
     const openGoogleMaps = () => {
         // Construct the Google Maps URL with the locationText
@@ -21,12 +34,129 @@ export default function PlaceItem({place}){
         Linking.openURL(mapsUrl);
     };
 
+    //Obtain the current user ID
+    const [userId, setUserId] = useState('');
+
+    useEffect(() => {
+        const fetchUserId = async () => {
+        try {
+            const user = await Auth.currentAuthenticatedUser();
+            setUserId(''+user.attributes.sub);
+        } catch (error) {
+            console.error('Error fetching user ID', error);
+        }
+    };
+
+        fetchUserId();
+    }, []);
+
+    useEffect(() => {
+        if(isFocused){
+        const checkExistingCoffeeShop = async () => {
+            const query = `
+                query GetExistingCoffeeShop($name: String!, $address: String!, $userId: String!) {
+                    listCoffeeShops(filter: { name: { eq: $name }, address: { eq: $address }, userId: { eq: $userId } }) {
+                        items {
+                            id
+                        }
+                    }
+                }
+            `;
+        
+            const variables={
+                "name":place.displayName?.text,
+                "address": place?.shortFormattedAddress,
+                "userId": userId,
+            }
+    
+        
+            const existingCoffeeShops = await API.graphql(graphqlOperation(query, variables));
+    
+            if(existingCoffeeShops.data.listCoffeeShops.items.length > 0){
+                setIsFavorite(true);
+                return existingCoffeeShops.data.listCoffeeShops.items.length;
+            }
+            else{
+                setIsFavorite(false);
+                return 0;
+            }
+        };
+        checkExistingCoffeeShop();
+    }
+    }, [isFocused]);
+
+    
+    const addFavoriteCoffeeShop = async () => {
+        
+        if(place?.photos){
+            console.log('There is a picture');
+            console.log(PLACE_PHOTO_BASE_URL+place?.photos[0]?.name+"/media?key="+GlobalApi.API_KEY+"&maxHeightPx=800&maxWidthPx=1200");
+            setImage(PLACE_PHOTO_BASE_URL+place?.photos[0]?.name+"/media?key="+GlobalApi.API_KEY+"&maxHeightPx=800&maxWidthPx=1200");
+        }
+
+        console.log(image);
+
+        const newShop={
+            "image":image,
+            "name":place.displayName?.text,
+            "address": place?.shortFormattedAddress,
+            "userId": userId,
+        }
+
+        if (isFavorite) {
+            // A matching coffee shop already exists, handle accordingly
+            console.log("Coffee shop already exists!");
+            return;
+        }
+
+        await API.graphql({query: createCoffeeShop, variables:{input:newShop}});
+        setIsFavorite(true);
+        console.log("User saved!");
+    };
+
+
+    const removeFavoriteCoffeeShop = async () => {
+        const query = `
+                query GetExistingCoffeeShop($name: String!, $address: String!, $userId: String!) {
+                    listCoffeeShops(filter: { name: { eq: $name }, address: { eq: $address }, userId: { eq: $userId } }) {
+                        items {
+                            id
+                        }
+                    }
+                }
+            `;
+        
+            const variables={
+                "name":place.displayName?.text,
+                "address": place?.shortFormattedAddress,
+                "userId": userId,
+            }
+    
+        
+            const existingCoffeeShops = await API.graphql(graphqlOperation(query, variables));
+
+            if (existingCoffeeShops.data.listCoffeeShops.items.length === 0) {
+                // No matching coffee shop found
+                console.error("No matching coffee shop found");
+                return;
+            }
+            else{
+                const coffeeShopToDelete = {"id":existingCoffeeShops.data.listCoffeeShops.items[0].id};
+                await API.graphql({query: deleteCoffeeShop, variables:{input:coffeeShopToDelete}});
+                setIsFavorite(false);
+                console.log("User removed!");
+            }
+    };
+
+    
+
+
     return(
         <View style={styles.container}>
             <LinearGradient colors={['transparent','#ffffff','#ffffff']}>
 
-                <Pressable style={styles.heartContainer}>
-                    <Ionicons name="heart-outline" size={24} color="white" />
+                <Pressable style={styles.heartContainer} onPress={isFavorite ? removeFavoriteCoffeeShop : addFavoriteCoffeeShop}>
+                    <Ionicons name={isFavorite ? "heart" : "heart-outline"} size={24} color="red" />
                 </Pressable>
 
                 <Image source={

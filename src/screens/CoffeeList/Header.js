@@ -5,7 +5,7 @@ export default function Header(){
 
     return(
         <View style={styles.container}>
-            <Image source={require('./../../../assets/images/transparent-logo.png')} style={{width:200, height:45, borderRadius:99, marginTop:25, objectFit:"contain"}}/>
+            <Image source={require('./../../../assets/images/transparent-logo.png')} style={{marginLeft:-14,width:200, height:45, borderRadius:99, marginTop:25, objectFit:"contain"}}/>
             
         </View>
     )
